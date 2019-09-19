@@ -59,7 +59,8 @@ def svm_loss_vectorized(W, X, y, reg, flum=False):
   slopes[y, range(num_train)] -= np.sum(margins>0, axis=0)
   
   dWt = np.dot(Xt.T, slopes.T) / float(num_train)
-  dW += reg * W 
+  dWt += reg * Wt
+  dW = np.transpose(dWt)
 
   pass  
   
